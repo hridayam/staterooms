@@ -9,6 +9,7 @@
       <th>Post</th>
       <th>Address</th>
       <th>User</th>
+      <th>Price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= post.post %></td>
         <td><%= post.address %></td>
         <td><%= post.user_id %></td>
+        <td><%= post.price %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
