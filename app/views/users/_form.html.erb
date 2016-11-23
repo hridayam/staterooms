@@ -1,0 +1,35 @@
+<% if @user.errors.any? %>
+<ul>
+  <% @user.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :firstname %>
+    <%= f.text_field :firstname %>
+  </p>
+
+  <p>
+    <%= f.label :lastname %>
+    <%= f.text_field :lastname %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <% if @user.new_record? %>
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.submit(@user.new_record? ? "Sign up" : "Update")%>
+  </p>
+<% end %>

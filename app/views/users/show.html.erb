@@ -1,4 +1,6 @@
-<h1> showing created user </h1>
+<h1> welcome to <%= "#{@user.firstname} #{@user.lastname}" %>'s page</h1>
+
+<%= gravatar_for @user %>
 <p>
   First Name: <%= @user.firstname %>
 </p>
