@@ -8,24 +8,24 @@
 
 <%= form_for @user do |f| %>
   <p>
-    <%= f.label :firstname %>
-    <%= f.text_field :firstname %>
+    <%= f.label("First Name: ") %>
+    <%= f.text_field :firstname, placeholder: "Enter First Name" %>
   </p>
 
   <p>
-    <%= f.label :lastname %>
-    <%= f.text_field :lastname %>
+    <%= f.label("Last Name: ") %>
+    <%= f.text_field :lastname, placeholder: "Enter Last Name" %>
   </p>
 
   <p>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.label("e-mail: ") %>
+    <%= f.email_field :email, placeholder: "Enter e-mail" %>
   </p>
 
   <% if @user.new_record? %>
     <p>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.label("Password: ") %>
+      <%= f.password_field :password, placeholder: "Password Is CASE SENSITIVE" %>
     </p>
   <% end %>
 
