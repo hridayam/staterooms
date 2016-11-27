@@ -34,7 +34,7 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all
+    @listings = Listing.all.sort_by(&:created_at).reverse!
   end
 
   private

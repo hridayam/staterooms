@@ -7,6 +7,7 @@
     <th>Description</th>
     <th>Price</th>
     <th>Creator</th>
+    <th>Time Created</th>
   </tr>
 
   <% @listings.each do |listing| %>
@@ -16,6 +17,7 @@
       <td><%= listing.description %></td>
       <td><%= number_to_currency(listing.price) %></td>
       <td><%= link_to("#{listing.user.email}", user_path(listing.user.id)) %></td>
+      <td><%= listing.created_at %></td>
     </tr>
   <% end %>
 </table>
