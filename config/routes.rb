@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
 
   get 'listings/new', to: 'listings#new'
+  get 'listings', to: 'listings#index'
 
   #for sessions
   get 'login', to: 'sessions#new'
