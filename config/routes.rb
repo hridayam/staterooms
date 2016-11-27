@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   resources :users, except: [:new]
+  resources :listings
 
   get 'signup', to: 'users#new'
+
+  get 'listings/new', to: 'listings#new'
 
   #for sessions
   get 'login', to: 'sessions#new'

@@ -1,3 +1,6 @@
 <% if session[:user_id] %>
   <%= link_to "Log out", logout_path, method: :delete %>
+  <%= link_to "Create listing", 'new' %>
+<% else %>
+  <%= link_to "Log in", login_path %>
 <% end %>

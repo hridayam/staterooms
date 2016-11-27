@@ -1,0 +1,13 @@
+<h1> Listing: <%= "#{@listing.title}" %></h1>
+<br>
+  Created by <%= @listing.user.firstname %> <%= @listing.user.lastname %>, <%= @listing.user.email %>
+
+<p>
+  Description:<br><%= @listing.description %>
+</p>
+<p>
+  Location:<br><%= @listing.address %>
+</p>
+<p>
+  Price: <%= number_to_currency(@listing.price) %>
+</p>

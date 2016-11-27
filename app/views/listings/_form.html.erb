@@ -1,0 +1,37 @@
+<% if @listing.errors.any? %>
+<ul>
+  <% @listing.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @listing, url: listings_path do |f| %>
+  <p>
+    <%= f.label("Title: ") %>
+    <br>
+    <%= f.text_field :title, placeholder: "Enter title" %>
+  </p>
+
+  <p>
+    <%= f.label("Address: ") %>
+    <br>
+    <%= f.text_area :address, placeholder: "Enter address of listing" %>
+  </p>
+
+  <p>
+    <%= f.label("Description: ") %>
+    <br>
+    <%= f.text_area :description, placeholder: "Enter description" %>
+  </p>
+
+  <p>
+    <%= f.label("Price: ") %>
+    <br>
+    <%= f.text_field :price %>
+  </p>
+
+  <p>
+    <%= f.submit(@listing.new_record? ? "Create listing" : "Update listing")%>
+  </p>
+<% end %>
