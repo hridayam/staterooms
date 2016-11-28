@@ -1,0 +1,9 @@
+<%= form_tag(listings_path, method: 'get', id: 'search-form') do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search listings" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<% if @listings.present? %>
+  <%= render 'listings_table' %>
+<% else %>
+  <p>No results found for <%= params[:search] %>.</p>
+<% end %>

@@ -34,7 +34,12 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all.sort_by(&:created_at).reverse!
+    if params[:search]
+      @listings = Listing.search(params[:search])
+    else
+      @listings = Listing.all
+    end
+    @listings = @listings.order('created_at DESC')
   end
 
   private
