@@ -7,27 +7,29 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-  <p>
-    <%= f.label("First Name: ") %>
-    <%= f.text_field :firstname, placeholder: "Enter First Name" %>
-  </p>
+  <table>
+    <tr>
+      <td><%= f.label("First Name: ") %></td>
+      <td><%= f.text_field :firstname, placeholder: "Enter First Name" %></td>
+    </tr>
 
-  <p>
-    <%= f.label("Last Name: ") %>
-    <%= f.text_field :lastname, placeholder: "Enter Last Name" %>
-  </p>
+    <tr>
+      <td><%= f.label("Last Name: ") %></td>
+      <td><%= f.text_field :lastname, placeholder: "Enter Last Name" %></td>
+    </tr>
 
-  <p>
-    <%= f.label("e-mail: ") %>
-    <%= f.email_field :email, placeholder: "Enter e-mail" %>
-  </p>
+    <tr>
+      <td><%= f.label("email: ") %></td>
+      <td><%= f.email_field :email, placeholder: "Enter valid @sjsu email" %></td>
+    </tr>
 
-  <% if @user.new_record? %>
-    <p>
-      <%= f.label("Password: ") %>
-      <%= f.password_field :password, placeholder: "Password Is CASE SENSITIVE" %>
-    </p>
-  <% end %>
+    <% if @user.new_record? %>
+      <tr>
+        <td><%= f.label("Password: ") %></td>
+        <td><%= f.password_field :password, placeholder: "Password Is CASE SENSITIVE" %></td>
+      </tr>
+    <% end %>
+  </table>
 
   <p>
     <%= f.submit(@user.new_record? ? "Sign up" : "Update")%>

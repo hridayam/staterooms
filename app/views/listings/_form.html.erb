@@ -7,29 +7,27 @@
 <% end %>
 
 <%= form_for @listing, url: listings_path do |f| %>
-  <p>
-    <%= f.label("Title: ") %>
-    <br>
-    <%= f.text_field :title, placeholder: "Enter title" %>
-  </p>
+  <table>
+    <tr>
+      <td><%= f.label("Title: ") %></td>
+      <td><%= f.text_field :title, placeholder: "Enter title" %></td>
+    </tr>
 
-  <p>
-    <%= f.label("Address: ") %>
-    <br>
-    <%= f.text_area :address, placeholder: "Enter address of listing" %>
-  </p>
+    <tr>
+      <td><%= f.label("Address: ") %></td>
+      <td><%= f.text_area :address, placeholder: "Enter address of listing" %></td>
+    </tr>
 
-  <p>
-    <%= f.label("Description: ") %>
-    <br>
-    <%= f.text_area :description, placeholder: "Enter description" %>
-  </p>
+    <tr>
+      <td><%= f.label("Description: ") %></td>
+      <td><%= f.text_area :description, placeholder: "Enter description" %></td>
+    </tr>
 
-  <p>
-    <%= f.label("Price: ") %>
-    <br>
-    <%= f.text_field :price %>
-  </p>
+    <tr>
+      <td><%= f.label("Price: ") %></td>
+      <td><%= f.text_field :price, placeholder: "Not negative" %></td>
+    </tr>
+  </table>
 
   <p>
     <%= f.submit(@listing.new_record? ? "Create listing" : "Update listing")%>

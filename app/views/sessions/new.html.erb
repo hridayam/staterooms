@@ -1,15 +1,17 @@
 <h1>Log in</h1>
 
 <%= form_for(:session, url: login_path) do |f| %>
-  <p>
-    <%= f.label("e-mail: ") %>
-    <%= f.text_field :email, placeholder: "Enter your e-mail" %>
-  </p>
+  <table>
+    <tr>
+      <td><%= f.label("email: ") %></td>
+      <td><%= f.text_field :email, placeholder: "Enter your email" %></td>
+    </tr>
 
-  <p>
-    <%= f.label("Password: ") %>
-    <%= f.password_field :password, autocomplete: "off"%>
-  </p>
+    <tr>
+      <td><%= f.label("Password: ") %></td>
+      <td><%= f.password_field :password, autocomplete: "off"%></td>
+    </tr>
+  </table>
 
   <p>
     <%= f.submit"Log In"%>
