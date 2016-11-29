@@ -5,5 +5,5 @@
 <% if @listings.present? %>
   <%= render 'listings_table' %>
 <% else %>
-  <p>No results found for <%= params[:search] %>.</p>
+  <p>No results found for <b><%= params[:search] %></b>.</p>
 <% end %>
