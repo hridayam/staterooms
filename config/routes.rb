@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'listings/new', to: 'listings#new'
   get 'listings', to: 'listings#index'
+  get 'profile', to: 'users#show'
 
   #for sessions
   get 'login', to: 'sessions#new'
