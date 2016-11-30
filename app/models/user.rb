@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :listings
-	has_many :comments
+  has_many :listings
+  has_many :comments
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@sjsu.edu+\z/i
 
@@ -14,7 +14,7 @@ class User < ApplicationRecord
 	before_save :downcase_fields
 
 	def downcase_fields
-      self.firstname.downcase!
+    self.firstname.downcase!
 	  self.lastname.downcase!
 	  self.email.downcase!
   end
