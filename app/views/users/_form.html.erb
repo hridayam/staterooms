@@ -6,32 +6,55 @@
 </ul>
 <% end %>
 
-<%= form_for @user do |f| %>
-  <table>
-    <tr>
-      <td><%= f.label("First Name: ") %></td>
-      <td><%= f.text_field :firstname, placeholder: "Enter First Name" %></td>
-    </tr>
+<div class = 'row'>
+  <div class = 'col-md-12'>
+    <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-    <tr>
-      <td><%= f.label("Last Name: ") %></td>
-      <td><%= f.text_field :lastname, placeholder: "Enter Last Name" %></td>
-    </tr>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("First Name: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.text_field :firstname, class: "form-control", placeholder: "Enter First Name", autofocus: true %>
+        </div>
+      </div>
 
-    <tr>
-      <td><%= f.label("email: ") %></td>
-      <td><%= f.email_field :email, placeholder: "Enter valid @sjsu email" %></td>
-    </tr>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("Last Name: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.text_field :lastname, class: "form-control", placeholder: "Enter Last Name" %>
+        </div>
+      </div>
 
-    <% if @user.new_record? %>
-      <tr>
-        <td><%= f.label("Password: ") %></td>
-        <td><%= f.password_field :password, placeholder: "Password Is CASE SENSITIVE" %></td>
-      </tr>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("email: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.email_field :email, class: "form-control", placeholder: "Enter valid @sjsu email" %>
+        </div>
+      </div>
+
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("Password: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.password_field :password, class: "form-control", placeholder: "Password Is CASE SENSITIVE" %>
+        </div>
+      </div>
+
+      <div class = 'form-group'>
+        <div class = 'col-sm-offset-2 col-sm-10'>
+          <% if @user.new_record? %>
+            <%= f.submit "Sign up", class: 'btn btn-primary btn-lg'%>
+          <% else %>
+            <%= f.submit "Update", class: 'btn btn-primary btn-lg'%>
+            <% end %>
+        </div>
+      </div>
     <% end %>
-  </table>
-
-  <p>
-    <%= f.submit(@user.new_record? ? "Sign up" : "Update")%>
-  </p>
-<% end %>
+  </div>
+</div>
