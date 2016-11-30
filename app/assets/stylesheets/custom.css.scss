@@ -17,3 +17,17 @@ $navbar-default-text: #fff;
   color: #fff;
   text-decoration: none;
 }
+
+.nav.navbar-nav li a {
+    color: #fff;
+}
+
+.center {
+  text-align: center;
+}
+
+.jumbotron {
+  background-image: asset-url('dormroom.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
