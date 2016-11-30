@@ -1,5 +1,4 @@
 $navbar-default-bg: #ff6e00;
-$navbar-default-text: #fff;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -22,6 +21,10 @@ $navbar-default-text: #fff;
     color: #fff;
 }
 
+.dropdown .dropdown-menu li a {
+  color: #ff6e00;
+}
+
 .center {
   text-align: center;
 }
@@ -30,4 +33,18 @@ $navbar-default-text: #fff;
   background-image: asset-url('dormroom.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  height: 500px
+}
+
+.jumbotron h1 {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
 }
