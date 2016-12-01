@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
     parameters[:user] = User.find(session[:user_id])
     @listing = Listing.new(parameters)
     if @listing.save
-      flash[:notice] = "Listing was successfully created"
+      flash[:sucess] = "Listing was successfully created"
       redirect_to listing_path(@listing)
     else
       render 'new'
