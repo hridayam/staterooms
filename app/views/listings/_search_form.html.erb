@@ -1,6 +1,17 @@
 <%= form_tag(listings_path, method: 'get', id: 'search-form') do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search listings" %>
-  <%= submit_tag "Search" %>
+
+<div class = 'row'>
+  <div class = 'col-md-12'>
+    <div class = 'form-group'>
+      <div class= "control-label col-sm-8">
+        <%= text_field_tag :search, params[:search], placeholder: "Search listings",  class: 'form-control' %>
+      </div>
+      <div class="control-label col-sm-2">
+        <%= submit_tag "Search", class: 'btn btn-primary'%>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
 <% if @listings.present? %>
   <%= render 'listings_table' %>
