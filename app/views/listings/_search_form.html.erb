@@ -14,7 +14,7 @@
 </div>
 <% end %>
 <% if @listings.present? %>
-  <%= render 'listings_table' %>
+  <%= render 'listings_table' obj: @listings %>
 <% else %>
   <p>No results found for <b><%= params[:search] %></b>.</p>
 <% end %>
