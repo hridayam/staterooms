@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127211811) do
+ActiveRecord::Schema.define(version: 20161202005742) do
 
   create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.decimal  "price",                     precision: 10, scale: 2
@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 20161127211811) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "email"
-    t.string "password_digest"
+    t.string  "firstname"
+    t.string  "lastname"
+    t.string  "email"
+    t.string  "password_digest"
+    t.boolean "email_confirmed", default: false
+    t.string  "confirm_token"
   end
 
   add_foreign_key "listings", "users"

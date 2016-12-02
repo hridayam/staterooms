@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :listings
   has_many :comments
 
+  before_create :confirmation_token
+  
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@sjsu.edu+\z/i
 
 	validates :firstname, presence: true
@@ -17,5 +19,18 @@ class User < ApplicationRecord
     self.firstname.downcase!
 	  self.lastname.downcase!
 	  self.email.downcase!
+  end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
+  private
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 end

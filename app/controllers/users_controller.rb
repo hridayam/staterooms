@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       if @user.save
-        flash[:success] = "user was successfully created"
-        redirect_to user_path(@user)
+        flash[:success] = "user was successfully created. Please activate your account by clicking on the link received in email address"
+        UserMailer.registration_confirmation(@user).deliver
+        redirect_to root_url
       else
         render 'new'
       end
@@ -32,6 +33,19 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def confirm_email
+      user = User.find_by_confirm_token(params[:id])
+      if user
+        user.email_activate
+        flash[:success] = "Welcome to the State rooms! Your email has been confirmed.
+        Please sign in to continue."
+        redirect_to login_path
+      else
+        flash[:error] = "Sorry. User does not exist"
+        redirect_to root_url
+      end
     end
 
     private
