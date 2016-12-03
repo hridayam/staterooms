@@ -1,29 +1,61 @@
 <%= render 'shared/errors', obj: @listing %>
 
-<%= form_for @listing, url: listings_path do |f| %>
-  <table>
-    <tr>
-      <td><%= f.label("Title: ") %></td>
-      <td><%= f.text_field :title, placeholder: "Enter title" %></td>
-    </tr>
+<div class = 'row'>
+  <div class = 'col-md-12'>
+    <%= form_for(@listing, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("Title: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.text_field :title, class: "form-control", placeholder: "Enter title" %>
+        </div>
+      </div>
 
-    <tr>
-      <td><%= f.label("Address: ") %></td>
-      <td><%= f.text_area :address, placeholder: "Enter address of listing" %></td>
-    </tr>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("Address: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.text_area :address, class: "form-control", rows: "2", style: "resize:none", placeholder: "Enter address of listing" %>
+        </div>
+      </div>
 
-    <tr>
-      <td><%= f.label("Description: ") %></td>
-      <td><%= f.text_area :description, placeholder: "Enter description" %></td>
-    </tr>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("Description: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.text_area :description, class: "form-control", rows: "7", style: "resize:none", placeholder: "Enter description" %>
+        </div>
+      </div>
 
-    <tr>
-      <td><%= f.label("Price: ") %></td>
-      <td><%= f.text_field :price, placeholder: "Not negative" %></td>
-    </tr>
-  </table>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("Price: ") %>
+        </div>
+        <div class = 'control-label col-sm-8'>
+          <%= f.text_field :price, class: "form-control", placeholder: "Not negative" %>
+        </div>
+      </div>
 
-  <p>
-    <%= f.submit(@listing.new_record? ? "Create listing" : "Update listing")%>
-  </p>
-<% end %>
+      <div class = 'form-group'>
+        <div class = 'control-label col-sm-2'>
+          <%= f.label("Images: (minimum 1 image)") %>
+        </div>
+        <div class = 'control-label col-sm-6'>
+
+        </div>
+        <div class = 'control-label col-sm-2'>
+          <button type="button" class="form-control btn btn-default">Chose File</button>
+        </div>
+      </div>
+
+      <div class = 'form-group'>
+        <div class = 'col-sm-offset-2 col-sm-10'>
+        <%= f.submit(@listing.new_record? ? "Create listing" : "Update listing", class: 'btn btn-primary btn-lg')%>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
