@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
+  before_action :require_user, except: [:new ,:create]
+  before_action :require_same_user, only: [:edit, :update]
     def new
       @user = User.new
     end
@@ -31,10 +33,6 @@ class UsersController < ApplicationController
     def show
     end
 
-    def set_user
-      @user = User.find(params[:id])
-    end
-
     def confirm_email
       user = User.find_by_confirm_token(params[:id])
       if user
@@ -51,6 +49,17 @@ class UsersController < ApplicationController
     private
       def user_params
         params.require(:user).permit(:firstname, :lastname, :email, :password)
+      end
+
+      def set_user
+        @user = User.find(params[:id])
+      end
+
+      def require_same_user
+        if current_user != @user
+          flash[:danger] = "You can only edit your own Account"
+          redirect_to root_path
+        end
       end
 
 end

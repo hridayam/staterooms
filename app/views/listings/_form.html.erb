@@ -1,4 +1,4 @@
-<%= render 'shared/errors' %>
+<%= render 'shared/errors', obj: @listing %>
 
 <%= form_for @listing, url: listings_path do |f| %>
   <table>

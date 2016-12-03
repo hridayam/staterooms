@@ -1,4 +1,8 @@
 class ListingsController < ApplicationController
+  before_action :set_listing, only: [:edit, :update, :show]
+  before_action :require_user
+  before_action :require_same_user, only: [:edit, :update]
+
   def new
     @listing = Listing.new
   end
@@ -16,13 +20,11 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.find(params[:id])
   end
 
   def update
-    @listing = Listing.find(params[:id])
     if @listing.update(listing_params)
-      flash[:success] = "Your account was updated successfully"
+      flash[:success] = "Your listing was updated successfully"
       redirect_to listing_path(@listing)
     else
       render 'edit'
@@ -30,7 +32,6 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find(params[:id])
   end
 
   def index
@@ -45,5 +46,16 @@ class ListingsController < ApplicationController
   private
     def listing_params
       params.require(:listing).permit(:price, :title, :address, :description)
+    end
+
+    def set_listing
+      @listing = Listing.find(params[:id])
+    end
+
+    def require_same_user
+      if current_user != @listing.user
+        flash[:danger] = "You can only edit your own Listing"
+        redirect_to root_path
+      end
     end
 end

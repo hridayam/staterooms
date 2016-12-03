@@ -47,19 +47,19 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
         <li><%= link_to "Log out", logout_path, method: :delete %></li>
-        <% else %>
-        <li><%= link_to "Log in", login_path %></li>
-        <%end %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "View Profile", user_path(current_user) %></li>
+            <li><%= link_to "Create New Listing", new_listing_path %></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>
         </li>
+        <% else %>
+        <li><%= link_to "Log in", login_path %></li>
+        <%end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

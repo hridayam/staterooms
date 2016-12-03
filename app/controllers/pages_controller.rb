@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  def new
-
+  def home
+    redirect_to listings_path if logged_in?
   end
 end
