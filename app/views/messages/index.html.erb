@@ -1,0 +1,23 @@
+<h1>Messages</h1>
+
+<% if session[:user_id] %>
+  <% @messages = Message.where("recipient": session[:user_id]) %>
+  <% @messages.each do |message| %>
+    <table>
+      <tr>
+        <th>From: </th>
+        <td><%= message.sender.email %></td>
+      </tr>
+      <tr>
+        <th>Subject: </th>
+        <td><%= message.subject %></td>
+      </tr>
+      <tr>
+        <th>Content: </th>
+        <td><%= message.content %></td>
+      </tr>
+    </table>
+  <% end %>
+<% else %>
+  You can't get messages if you aren't logged in.
+<% end %>

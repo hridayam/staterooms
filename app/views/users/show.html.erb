@@ -13,4 +13,8 @@
   email: <%= @user.email %>
 </p>
 
+<% if session[:user_id] == @user.id %>
+  <%= button_to "Edit info", edit_user_path(id: session[:user_id]) %>
+<% end %>
+
 <%= render 'listings/listings_table', obj: @user.listings %>

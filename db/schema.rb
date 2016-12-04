@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202005742) do
+ActiveRecord::Schema.define(version: 20161204062754) do
 
-  create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.decimal  "price",                     precision: 10, scale: 2
     t.string   "title"
     t.text     "address",     limit: 65535
@@ -23,7 +23,18 @@ ActiveRecord::Schema.define(version: 20161202005742) do
     t.index ["user_id"], name: "fk_rails_baa008bfd2", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "subject"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "sender"
+    t.integer  "recipient"
+    t.index ["recipient"], name: "fk_rails_5cfa032fe3", using: :btree
+    t.index ["sender"], name: "fk_rails_f380d269a6", using: :btree
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string  "firstname"
     t.string  "lastname"
     t.string  "email"
@@ -33,4 +44,6 @@ ActiveRecord::Schema.define(version: 20161202005742) do
   end
 
   add_foreign_key "listings", "users"
+  add_foreign_key "messages", "users", column: "recipient"
+  add_foreign_key "messages", "users", column: "sender"
 end

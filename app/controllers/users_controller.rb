@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
-  before_action :require_user, except: [:new ,:create, :confirm_email]
+  before_action :require_user, except: [:new, :create, :confirm_email]
   before_action :require_same_user, only: [:edit, :update]
     def new
       @user = User.new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       if @user.save
-        flash[:success] = "user was successfully created. Please activate your account by clicking on the link received in email address"
+        flash[:success] = "User was successfully created. Please activate your account by clicking on the link received in email address"
         UserMailer.registration_confirmation(@user).deliver
         redirect_to root_url
       else
