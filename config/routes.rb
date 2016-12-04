@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   get 'users/edit', to: 'users#edit'
 
+  # for listings
   get 'listings/new', to: 'listings#new'
   get 'listings', to: 'listings#index'
 
@@ -20,7 +21,8 @@ Rails.application.routes.draw do
 
   # for messages
   get 'messages', to: 'messages#index'
-  get 'messages/new', to: 'messages#new'
+  post 'messages/new', to: 'messages#new'
+  post 'messages', to: 'messages#index'
 
   get 'home', to: 'pages#home'
   root 'pages#home'

@@ -4,7 +4,7 @@
 
 <div class = 'row'>
   <div class = 'col-md-12'>
-    <%= form_for(@listing, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <%= form_for(@message, :html => {class: "form-horizontal", role: "form"}) do |f| %>
       <div class = 'form-group'>
         <div class = 'control-label col-sm-2'>
           <%= f.label("Recipient: ") %>
@@ -19,7 +19,7 @@
           <%= f.label("Subject: ") %>
         </div>
         <div class = 'control-label col-sm-8'>
-          <%= f.text_area :subject, class: "form-control", placeholder: "Enter subject of message" %>
+          <%= f.text_field :subject, class: "form-control", placeholder: "Enter subject of message" %>
         </div>
       </div>
 
