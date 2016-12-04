@@ -1,7 +1,7 @@
 <h1>Messages</h1>
 
 <% if session[:user_id] %>
-  <% @messages = Message.where("recipient": session[:user_id]) %>
+  <% @messages = Message.where(recipient: session[:user_id]) %>
   <% @messages.each do |message| %>
     <table>
       <tr>

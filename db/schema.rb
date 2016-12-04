@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 20161204062754) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "subject"
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "sender"
-    t.integer  "recipient"
-    t.index ["recipient"], name: "fk_rails_5cfa032fe3", using: :btree
-    t.index ["sender"], name: "fk_rails_f380d269a6", using: :btree
+    t.text     "content",      limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.index ["recipient_id"], name: "fk_rails_12e9de2e48", using: :btree
+    t.index ["sender_id"], name: "fk_rails_b8f26a382d", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -44,6 +44,6 @@ ActiveRecord::Schema.define(version: 20161204062754) do
   end
 
   add_foreign_key "listings", "users"
-  add_foreign_key "messages", "users", column: "recipient"
-  add_foreign_key "messages", "users", column: "sender"
+  add_foreign_key "messages", "users", column: "recipient_id"
+  add_foreign_key "messages", "users", column: "sender_id"
 end
