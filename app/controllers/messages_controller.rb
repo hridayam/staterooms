@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     parameters[:recipient] = User.where(email: parameters[:recipient]).first!
     @message = Message.new(parameters)
     if @message.save
-      flash[:sucess] = "Message successful!"
+      flash[:success] = "Message successful!"
       redirect_to messages_path(@message.sender)
     else
       render :new

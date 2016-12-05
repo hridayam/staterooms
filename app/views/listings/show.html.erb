@@ -1,5 +1,9 @@
 <h1><%= "#{@listing.title}" %></h1>
 <br>
+
+<p>
+  <%= image_tag @listing.cover.url if @listing.cover? %>
+</p>
   Created by <%= @listing.user.firstname %> <%= @listing.user.lastname %>, <%= @listing.user.email %>
 
 <p>
