@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
 
   def destroy
     @message = Message.find(deletion_param)
-    if session[:user_id] == @message.recipient.id && Message.delete(:id)
+    if session[:user_id] == @message.recipient.id && Message.delete(deletion_param)
       flash[:success] = "Message deleted."
     end
     redirect_to messages_path(@message.sender)
