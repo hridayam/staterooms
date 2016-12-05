@@ -3,25 +3,11 @@
 <% if session[:user_id] %>
   <%= button_to("New message", messages_new_path) %>
   <% @messages = Message.where(recipient: session[:user_id]).order('created_at DESC') %>
-  <% @messages.each do |message| %>
-    <p><table>
-      <tr>
-        <th>Sent at: </th>
-        <td><%= message.created_at %></td>
-      </tr>
-      <tr>
-        <th>From: </th>
-        <td><%= message.sender.email %></td>
-      </tr>
-      <tr>
-        <th>Subject: </th>
-        <td><%= message.subject %></td>
-      </tr>
-      <tr>
-        <th>Content: </th>
-        <td><%= message.content %></td>
-      </tr>
-  </table></p>
+  <% @messages.each do |m| %>
+    <p>
+      <%= render 'message_disp', message: m %>
+      <%= button_to "Delete", messages_destroy_path(id: m.id) %>
+    </p>
   <% end %>
 <% else %>
   You can't send or recieve messages if you aren't logged in.

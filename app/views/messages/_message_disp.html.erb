@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Sent at: </th>
+    <td><%= message.created_at %></td>
+  </tr>
+  <tr>
+    <th>From: </th>
+    <td><%= message.sender.email %></td>
+  </tr>
+  <tr>
+    <th>Subject: </th>
+    <td><%= message.subject %></td>
+  </tr>
+  <tr>
+    <th>Content: </th>
+    <td><%= message.content %></td>
+  </tr>
+</table>
