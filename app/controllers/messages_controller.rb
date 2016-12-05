@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   def create
     parameters = message_params
     parameters[:sender] = User.find(session[:user_id])
-    parameters[:recipient] = User.where(email: parameters[:recipient]).first!
+    parameters[:recipient] = User.where(email: parameters[:recipient]).first
     @message = Message.new(parameters)
     if @message.save
       flash[:success] = "Message successful!"
