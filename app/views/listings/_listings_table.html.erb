@@ -19,3 +19,13 @@
     </tr>
   <% end %>
 </table>
+
+<% obj.each do |listing| %>
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <% if listing.cover? %>
+        <%= image_tag listing.cover.url, class: "thumbnail thumb-img" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
