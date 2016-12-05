@@ -4,7 +4,7 @@
   <%= button_to("New message", messages_new_path) %>
   <% @messages = Message.where(recipient: session[:user_id]).order('created_at DESC') %>
   <% @messages.each do |message| %>
-    <table>
+    <p><table>
       <tr>
         <th>Sent at: </th>
         <td><%= message.created_at %></td>
@@ -21,7 +21,7 @@
         <th>Content: </th>
         <td><%= message.content %></td>
       </tr>
-    </table>
+  </table></p>
   <% end %>
 <% else %>
   You can't send or recieve messages if you aren't logged in.

@@ -6,13 +6,13 @@ class MessagesController < ApplicationController
   def create
     parameters = message_params
     parameters[:sender] = User.find(session[:user_id])
-    parameters[:recipient] = User.where(email: parameters[:recipient])
+    parameters[:recipient] = User.where(email: parameters[:recipient]).first!
     @message = Message.new(parameters)
     if @message.save
       flash[:sucess] = "Message successful!"
-      redirect_to profile_path(@message.sender)
+      redirect_to messages_path(@message.sender)
     else
-      render 'new'
+      render :new
     end
   end
 

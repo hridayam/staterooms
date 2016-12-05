@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # for messages
   get 'messages', to: 'messages#index'
   post 'messages/new', to: 'messages#new'
-  post 'messages', to: 'messages#index'
+  post 'messages', to: 'messages#create'
 
   get 'home', to: 'pages#home'
   root 'pages#home'
