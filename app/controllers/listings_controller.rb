@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:edit, :update, :show]
+  before_action :set_listing, only: [:edit, :update, :show, :destroy]
   before_action :require_user
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def new
     @listing = Listing.new
@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
     parameters[:user] = User.find(session[:user_id])
     @listing = Listing.new(parameters)
     if @listing.save
-      flash[:sucess] = "Listing was successfully created"
+      flash[:success] = "Listing was successfully created"
       redirect_to listing_path(@listing)
     else
       render 'new'
@@ -32,6 +32,16 @@ class ListingsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @listing.destroy
+      flash[:success] = "Your listing was updated successfully"
+      redirect_to listings_path
+    else
+      flash[:danger] = "something went wrong"
+      redirect_to listings_path
+    end
   end
 
   def index

@@ -1,3 +1,4 @@
+<% if false %>
 <table>
   <tr>
     <th>Title</th>
@@ -20,12 +21,31 @@
   <% end %>
 </table>
 
-<% obj.each do |listing| %>
-  <div class="row">
-    <div class="col-xs-6 col-md-3">
+<div class="row">
+  <% obj.each do |listing| %>
+    <div class="col-xs-6 col-md-3 thumbnail-div">
       <% if listing.cover? %>
         <%= image_tag listing.cover.url, class: "thumbnail thumb-img" %>
       <% end %>
     </div>
-  </div>
+  <% end %>
+</div>
 <% end %>
+
+<div class="row">
+  <% obj.each do |listing| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <% if listing.cover? %>
+          <%= image_tag listing.cover.url, class: "thumb-img" %>
+        <% end %>
+        <div class="caption">
+          <h2><%= link_to("#{listing.title}", listing_path(listing.id)) %></h2>
+          <% if listing.user == @current_user %>
+            <p><%= link_to "Edit", edit_listing_path(listing.id), class: "btn btn-default" %> <%= link_to "Delete", listing_path(listing.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
