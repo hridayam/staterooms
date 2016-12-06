@@ -1,17 +1,31 @@
 <h1 align = "center"><%= "#{@listing.title}" %></h1>
 <br>
 
-<p>
-  <%= image_tag @listing.cover.url if @listing.cover? %>
-</p>
-  Created by <%= @listing.user.firstname %> <%= @listing.user.lastname %>, <%= @listing.user.email %>
+<div class="well col-xs-10 col-xs-offset-1">
+  <%= image_tag @listing.cover.url, class: "img-fluid img-thumbnail", alt: "Responsive image" %>
 
-<p>
-  Description:<br><%= @listing.description %>
-</p>
-<p>
-  Location:<br><%= @listing.address %>
-</p>
-<p>
-  Price: <%= number_to_currency(@listing.price) %>
-</p>
+  <small>
+    Created by <%= link_to "#{@listing.user.firstname} #{@listing.user.lastname}", user_path(@listing.user.id) %>, <%= @listing.user.email %>
+  </small>
+
+  <h4 class="center"><strong>Description:</strong></h4>
+  <hr>
+  <%= simple_format(@listing.description) %>
+  <p>
+    <b>Location: </b><%= @listing.address %>
+  </p>
+  <p>
+    <b>Price: </b><%= number_to_currency(@listing.price) %>
+  </p>
+  
+  <br>
+  <div class= "listing-actions" >
+    <p>
+      <% if @listing.user == @current_user %>
+        <%= link_to "Edit", edit_listing_path(@listing.id), class: "btn btn-default" %>
+        <%= link_to "Delete", listing_path(@listing.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default" %>
+      <% end %>
+      <%= link_to "view all listings", listings_path, class: "btn btn-default" %>
+    </p>
+  </div>
+</div>

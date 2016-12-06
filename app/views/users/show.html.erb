@@ -1,20 +1,29 @@
 <h3 align = "center"> welcome to <%= "#{@user.firstname} #{@user.lastname}" %>'s page</h3>
 
-<%= gravatar_for @user %>
+<div class = "row">
+  <div class = "col-md-4 col-md-offset-4 center">
+    <%= gravatar_for @user, size: 150 %>
+  </div>
+</div>
+
+
 <p>
-  First Name: <%= @user.firstname %>
+  <b>First Name: </b><%= @user.firstname %>
 </p>
 
 <p>
-  Last Name: <%= @user.lastname %>
+  <b>Last Name: </b><%= @user.lastname %>
 </p>
 
 <p>
-  email: <%= @user.email %>
+  <b>email: </b><%= @user.email %>
 </p>
+
 
 <% if session[:user_id] == @user.id %>
-  <p><%= button_to "Edit info", edit_user_path(id: session[:user_id]) %></p>
+  <p><%= button_to "Edit info", edit_user_path(id: session[:user_id]), class: "btn btn-primary" %></p>
 <% end %>
 
+<h4 align="center"><%= "#{@user.firstname} #{@user.lastname}" %>'s Listings </h3>
+<br>
 <%= render 'listings/listings_table', obj: @user.listings %>

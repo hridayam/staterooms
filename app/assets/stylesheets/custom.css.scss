@@ -51,10 +51,12 @@ footer {
 }
 
 .thumb-img {
-  max-height: 171px;
-  max-width: 180px;
+  max-height: 242px;
+  max-width: 200px;
 }
 
 .thumbnail-div {
-  background-color:#475;
+  display:block;
+  min-height: 300px;
+  overflow: hidden;
 }
