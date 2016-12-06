@@ -5,8 +5,7 @@
   <% @messages = Message.where(recipient: session[:user_id]).order('created_at DESC') %>
   <% @messages.each do |m| %>
     <p>
-      <%= render 'message_disp', message: m %>
-      <%= button_to "Delete", messages_destroy_path(id: m.id) %>
+      <%= render 'message_disp', message: m, show_options: true, show_parents: false %>
     </p>
   <% end %>
 <% else %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204062754) do
+ActiveRecord::Schema.define(version: 20161205050130) do
 
   create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.decimal  "price",                     precision: 10, scale: 2
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20161204062754) do
     t.datetime "updated_at",                 null: false
     t.integer  "sender_id"
     t.integer  "recipient_id"
+    t.integer  "parent_id"
     t.index ["recipient_id"], name: "fk_rails_12e9de2e48", using: :btree
     t.index ["sender_id"], name: "fk_rails_b8f26a382d", using: :btree
   end

@@ -1,18 +1,35 @@
-<table>
-  <tr>
-    <th>Sent at: </th>
-    <td><%= message.created_at %></td>
-  </tr>
-  <tr>
-    <th>From: </th>
-    <td><%= message.sender.email %></td>
-  </tr>
-  <tr>
-    <th>Subject: </th>
-    <td><%= message.subject %></td>
-  </tr>
-  <tr>
-    <th>Content: </th>
-    <td><%= message.content %></td>
-  </tr>
-</table>
+<p>
+  <table>
+    <tr>
+      <th>Sent at: </th>
+      <td><%= message.created_at %></td>
+    </tr>
+    <tr>
+      <th>From: </th>
+      <td><%= message.sender.email %></td>
+    </tr>
+    <tr>
+      <th>Subject: </th>
+      <td><%= message.subject %></td>
+    </tr>
+    <tr>
+      <th>Content: </th>
+      <td><%= message.content %></td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <% if show_options %>
+        <td><%= button_to "Delete", messages_destroy_path(id: message.id) %></td>
+        <td><%= button_to "Reply", messages_reply_path(id: message.id) %></td>
+      <% end %>
+      <% if message.parent_id && Message.find(message.parent_id) %>
+        <% if show_parents %>
+          <%= render 'message_disp', message: Message.find(message.parent_id), show_options: false, show_parents: true %>
+        <% else %>
+          <%= button_to "Show full", messages_full_path(id: message.id) %>
+        <% end %>
+      <% end %>
+    </tr>
+  </table>
+</p>

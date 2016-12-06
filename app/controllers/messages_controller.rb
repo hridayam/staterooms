@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   def create
     parameters = message_params
     parameters[:sender] = User.find(session[:user_id])
-    parameters[:recipient] = User.where(email: parameters[:recipient]).first!
+    parameters[:recipient] = User.where(email: parameters[:recipient]).first
     @message = Message.new(parameters)
     if @message.save
       flash[:sucess] = "Message successful!"
@@ -16,8 +16,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def reply
+    @message = Message.find(id_param)
+  end
+
   def destroy
-    @message = Message.find(deletion_param)
+    @message = Message.find(id_param)
     if session[:user_id] == @message.recipient.id && Message.delete(deletion_param)
       flash[:success] = "Message deleted."
     end
@@ -29,7 +33,7 @@ class MessagesController < ApplicationController
       params.require(:message).permit(:sender, :recipient, :subject, :content)
     end
 
-    def deletion_param
+    def id_param
       params.require(:id)
     end
 end

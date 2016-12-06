@@ -1,0 +1,4 @@
+<h1>Reply</h1>
+
+<%= render 'form', recipient: nil, subject: @message.subject, content: "" %>
+<%= render 'message_disp', message: @message, show_options: false, show_parents: true %>

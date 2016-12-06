@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'users/edit', to: 'users#edit'
 
   # for listings
-  get 'listings/new', to: 'listings#new'
   get 'listings', to: 'listings#index'
+  get 'listings/new', to: 'listings#new'
+  post 'listings/advanced', to: 'listings#advanced'
 
   #for sessions
   get 'login', to: 'sessions#new'
@@ -20,9 +21,12 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   # for messages
+  get 'message', to: 'messages#index'
   get 'messages', to: 'messages#index'
-  post 'messages/new', to: 'messages#new'
+  get 'messages/full', to: 'messages#full'
   post 'messages', to: 'messages#create'
+  post 'messages/new', to: 'messages#new'
+  post 'messages/reply', to: 'messages#reply'
   post 'messages/destroy', to: 'messages#destroy'
 
   get 'home', to: 'pages#home'
