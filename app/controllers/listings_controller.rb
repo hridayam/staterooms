@@ -46,7 +46,8 @@ class ListingsController < ApplicationController
 
   def index
     if params[:search]
-      @listings = Listing.search(params[:search])
+      @wcard = "%#{params[:search]}"
+      @listings = Listing.where("title LIKE ? OR description LIKE ? OR address LIKE ?", @wcard, @wcard, @wcard)
     else
       @listings = Listing.all
     end

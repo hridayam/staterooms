@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205103124) do
+ActiveRecord::Schema.define(version: 20161206053922) do
 
-  create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "listings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.decimal  "price",                     precision: 10, scale: 2
     t.string   "title"
     t.text     "address",     limit: 65535
@@ -24,18 +24,19 @@ ActiveRecord::Schema.define(version: 20161205103124) do
     t.index ["user_id"], name: "fk_rails_baa008bfd2", using: :btree
   end
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "subject"
     t.text     "content",      limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "sender_id"
     t.integer  "recipient_id"
+    t.integer  "parent_id"
     t.index ["recipient_id"], name: "fk_rails_12e9de2e48", using: :btree
     t.index ["sender_id"], name: "fk_rails_b8f26a382d", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string  "firstname"
     t.string  "lastname"
     t.string  "email"

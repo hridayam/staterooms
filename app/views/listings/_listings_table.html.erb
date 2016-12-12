@@ -9,7 +9,7 @@
     <th>Time Created</th>
   </tr>
 
-  <% obj.each do |listing| %>
+  <% @listings.each do |listing| %>
     <tr>
       <td><%= link_to("#{listing.title}", listing_path(listing.id)) %></td>
       <td><%= listing.address %></td>
