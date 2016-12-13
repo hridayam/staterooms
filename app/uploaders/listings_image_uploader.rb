@@ -10,9 +10,11 @@ class ListingsImageUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
+
   def default_url
-  "/assets/fallback/" + [version_name, "default.png"].compact.join('_')
-end
+    "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  end
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
